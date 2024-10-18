@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+</head>
+<body>
+
+    <input id="a" type="text" placeholder="First value"/>
+    <input id="b" type="text" placeholder="Second value"/>
+    
+    <button onclick="calculateSum()">Find Sum</button>
+    <p id="result"></p> <!-- Display the result here -->
+
+    <script>
+        async function calculateSum() {
+            const a = document.getElementById('a').value;
+            const b = document.getElementById('b').value;
+
+            // Check if both inputs have values
+            if (!a || !b) {
+                alert("Please enter both numbers.");
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/sum', { // Change port to 3000
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ a, b })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+
+                const data = await response.json();
+                document.getElementById('result').textContent = `Sum: ${data.ans}`;
+                console.log(data);
+            } catch (error) {
+                console.error("Error:", error);
+                alert("There was an error calculating the sum.");
+            }
+        }
+    </script>
+</body>
+</html>
