@@ -1,6 +1,6 @@
 // starting react revsiion
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 
 // const App = () => {
@@ -41,50 +41,95 @@ import {useState} from 'react';
 // }
 // export default App;
 
-import PostComponent from '../components/Post';
+// import PostComponent from '../components/Post';
 
-const App = () => {
-  const [posts, setPosts] = useState([]);
+// const App = () => {
+//   const [posts, setPosts] = useState([]);
 
-  // Map over posts to generate an array of PostComponent instances
-  const postComponents = posts.map((post) => (
-    <PostComponent
-      key={post.id}
-      name={post.name}
-      subtitle={post.subtitle}
-      time={post.time}
-      image={post.image}
-      description={post.description}
-    />
-  ));
+//   // Map over posts to generate an array of PostComponent instances
+//   const postComponents = posts.map((post) => (
+//     <PostComponent
+//       key={post.id}
+//       name={post.name}
+//       subtitle={post.subtitle}
+//       time={post.time}
+//       image={post.image}
+//       description={post.description}
+//     />
+//   ));
 
-  // Function to add a new post with current time
-  function addPosts() {
-    const currentTime = new Date().toLocaleTimeString(); // Get current time as a string
+//   // Function to add a new post with current time
+//   function addPosts() {
+//     const currentTime = new Date().toLocaleTimeString(); // Get current time as a string
 
-    setPosts([
-      ...posts,
-      {
-        id: posts.length + 1, // Add a unique id for each post
-        name: "kunalPanwar",
-        subtitle: "web developer",
-        time: currentTime, // Set current time as the time of the post
-        image: "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
-        description:
-          "Want to know how to win big? Check out how these folks won $6000 in bounties.",
-      },
-    ]);
+//     setPosts([
+//       ...posts,
+//       {
+//         id: posts.length + 1, // Add a unique id for each post
+//         name: "kunalPanwar",
+//         subtitle: "web developer",
+//         time: currentTime, // Set current time as the time of the post
+//         image: "https://appx-wsb-gcp-mcdn.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg",
+//         description:
+//           "Want to know how to win big? Check out how these folks won $6000 in bounties.",
+//       },
+//     ]);
+//   }
+
+//   return (
+//     <div style={{ background: "#dfe6e9", height: "100vh" }}>
+//       <button onClick={addPosts}>Add post</button>
+//       <div style={{ display: "flex", justifyContent: "center" }}>
+//         <div>{postComponents}</div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+// creating timer
+
+
+const App =()=>{
+
+  const stylig ={
+    backgroundColor:"blue",
+    height:80,
+    width:80,
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    color:"white",
+    fontSize:20,
+    borderRadius:10,
+    padding:20
   }
 
-  return (
-    <div style={{ background: "#dfe6e9", height: "100vh" }}>
-      <button onClick={addPosts}>Add post</button>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>{postComponents}</div>
-      </div>
+  const [time,setTime]=useState(0);
+
+  useEffect(()=>{
+
+    const timer =setInterval(()=>{
+      setTime(time+1);
+
+    },1000);
+
+    return ()=>clearInterval(timer)
+
+  },[time])
+
+  return(
+    
+
+    <div style={stylig}>
+      {time} seconds 😊
+
     </div>
-  );
-};
+  )
 
+
+
+
+}
 export default App;
-
