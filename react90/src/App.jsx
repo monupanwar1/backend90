@@ -91,45 +91,105 @@ import {useEffect, useState} from 'react';
 // creating timer
 
 
-const App =()=>{
+// const App =()=>{
 
-  const stylig ={
-    backgroundColor:"blue",
-    height:80,
-    width:80,
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    color:"white",
-    fontSize:20,
-    borderRadius:10,
-    padding:20
-  }
+//   const stylig ={
+//     backgroundColor:"blue",
+//     height:80,
+//     width:80,
+//     display:"flex",
+//     justifyContent:"center",
+//     alignItems:"center",
+//     color:"white",
+//     fontSize:20,
+//     borderRadius:10,
+//     padding:20
+//   }
 
-  const [time,setTime]=useState(0);
+//   const [time,setTime]=useState(0);
 
-  useEffect(()=>{
+//   useEffect(()=>{
 
-    const timer =setInterval(()=>{
-      setTime(time+1);
+//     const timer =setInterval(()=>{
+//       setTime(time+1);
 
-    },1000);
+//     },1000);
 
-    return ()=>clearInterval(timer)
+//     return ()=>clearInterval(timer)
 
-  },[time])
+//   },[time])
 
-  return(
+//   return(
     
 
-    <div style={stylig}>
-      {time} seconds 😊
+//     <div style={stylig}>
+//       {time} seconds 😊
 
-    </div>
+//     </div>
+//   )
+
+
+
+
+// }
+// export default App;
+
+
+
+
+const App =()=>{
+  const style = {
+    backgroundColor: "blue",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white",
+    fontSize: 20,
+    padding: 20
+};
+
+  const [users,setUsers]=useState([]);
+  const [loading,setLoading]=useState(true);
+
+
+  useEffect(()=>{
+    const fetchData = async()=>{
+
+      try{
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+       const data = await response.json();
+       setUsers(data);
+
+      }catch(error){
+        console.log("error in fetchin the data",error);
+
+      } finally{
+        setLoading(false);
+      }
+      
+    };
+    fetchData();
+  },[]);
+
+
+
+  if (loading){
+    return(
+      <div>Loading...</div>
+    )
+  }
+
+
+  return(
+    <ul>
+      <li style={style}>{users.map(user=>(
+      <div style={{ borderTop: "2px solid red",}} key={user.id}>
+        <p>{user.name}</p>
+        <p>{user.email}</p>
+      </div>
+      ))}</li>
+     
+    </ul>
   )
-
-
-
-
 }
+
 export default App;
