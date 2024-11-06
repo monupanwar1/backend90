@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f9f9f9, #e9ecef);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #signup-container, #signin-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 30%;
+    margin: 30px auto;
+    transition: all 0.3s ease;
+  }
+  
+  #signup-container:hover, #signin-container:hover {
+    transform: scale(1.05);
+  }
+  
+  #signup-container h2, #signin-container h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+    font-size: 24px;
+  }
+  
+  #signup-container input, #signin-container input {
+    display: block;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid #ced4da;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 16px;
+    transition: border 0.3s ease;
+  }
+  
+  #signup-container input:focus, #signin-container input:focus {
+    border: 2px solid #007bff;
+    outline: none;
+  }
+  
+  #signup-container button, #signin-container button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #signup-container button:hover, #signin-container button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+  }
+  
+  #todos-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 50%;
+    margin: 30px auto;
+    transition: all 0.3s ease;
+  }
+  
+  #todos-container h1 {
+    display: inline-block;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  
+  #todos-container #logout-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 40px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #todos-container #logout-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .todos-input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .todos-input-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ced4da;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+  }
+  
+  .todos-input-container input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .todos-input-container button {
+    padding: 10px 30px;
+    margin-left: 20px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .todos-input-container button:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+  }
+  
+  #todos-list {
+    margin-top: 20px;
+  }
+  
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 6px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .todo-item input[type="text"] {
+    padding: 8px;
+    width: 80%;
+    border: none;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+  }
+  
+  .todo-item input[type="text"]:focus {
+    outline: none;
+  }
+  
+  .todo-item input[type="checkbox"] {
+    cursor: pointer;
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+  
+  .todo-item button {
+    margin-left: 5px;
+    padding: 8px 15px;
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .todo-item button:hover {
+    background-color: #e07b00;
+  }
+  
+  .todo-item button + button {
+    background-color: #dc3545;
+  }
+  
+  .todo-item button + button:hover {
+    background-color: #c82333;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    #todos-container, #signup-container, #signin-container {
+      width: 75%;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    #todos-container, #signup-container, #signin-container {
+      width: 95%;
+    }
+  }
+  
