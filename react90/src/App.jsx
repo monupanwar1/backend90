@@ -137,59 +137,82 @@ import {useEffect, useState} from 'react';
 
 
 
-const App =()=>{
-  const style = {
-    backgroundColor: "blue",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "white",
-    fontSize: 20,
-    padding: 20
-};
+// const App =()=>{
+//   const style = {
+//     backgroundColor: "blue",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     color: "white",
+//     fontSize: 20,
+//     padding: 20
+// };
 
-  const [users,setUsers]=useState([]);
-  const [loading,setLoading]=useState(true);
+//   const [users,setUsers]=useState([]);
+//   const [loading,setLoading]=useState(true);
 
 
-  useEffect(()=>{
-    const fetchData = async()=>{
+//   useEffect(()=>{
+//     const fetchData = async()=>{
 
-      try{
-        const response = await fetch("https://jsonplaceholder.typicode.com/users");
-       const data = await response.json();
-       setUsers(data);
+//       try{
+//         const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//        const data = await response.json();
+//        setUsers(data);
+       
 
-      }catch(error){
-        console.log("error in fetchin the data",error);
+//       }catch(error){
+//         console.log("error in fetchin the data",error);
 
-      } finally{
-        setLoading(false);
-      }
+//       } finally{
+//         setLoading(false);
+//       }
       
-    };
-    fetchData();
-  },[]);
+//     };
+//     fetchData();
+//   },[]);
 
 
 
-  if (loading){
-    return(
-      <div>Loading...</div>
-    )
-  }
+//   if (loading){
+//     return(
+//       <div>Loading...</div>
+//     )
+//   }
 
 
-  return(
-    <ul>
-      <li style={style}>{users.map(user=>(
-      <div style={{ borderTop: "2px solid red",}} key={user.id}>
-        <p>{user.name}</p>
-        <p>{user.email}</p>
-      </div>
-      ))}</li>
+//   return(
+//     <ul>
+//       <li style={style}>{users.map(user=>(
+//       <div style={{ borderTop: "2px solid red",}} key={user.id}>
+//         <p>{user.name}</p>
+//         <p>{user.email}</p>
+//       </div>
+//       ))}</li>
      
-    </ul>
-  )
-}
+//     </ul>
+//   )
+// }
 
-export default App;
+// export default App;
+
+
+
+// conditional rendering
+
+// const App =()=>{
+
+//   const [isVisible,setIsVisible] =useState(false);
+
+//   return (
+//     <div>
+//       <button onClick={()=>setIsVisible(!isVisible)}>
+//         Toggle Visibility
+//       </button>
+//       {isVisible &&  <p>this message is conditonal render</p>}
+
+
+//     </div>
+//   )
+
+// }
+// export default App;
