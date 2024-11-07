@@ -250,34 +250,91 @@ import {useEffect, useState} from 'react';
 
 //map ,lists and key ;
 
-const Itemlist=({items})=>{
-  return (
-    <ul>
-      {items.map(item=>(
-        <li key={item.id}>
-          {item.name}
-        </li>
-      ))}
-    </ul>
-  )
-}
+// const Itemlist=({items})=>{
+//   return (
+//     <ul>
+//       {items.map(item=>(
+//         <li key={item.id}>
+//           {item.name}
+//         </li>
+//       ))}
+//     </ul>
+//   )
+// }
 
 
-const App =()=>{
+// const App =()=>{
 
-  const items=[
-    {id:1,name:"item 1"},
-    {id:2,name:"item 2"},
-    {id:3,name:"item 3"},
-    {id:4,name:"item 4"},
-    {id:5,name:"item 5"},
-  ]
+//   const items=[
+//     {id:1,name:"item 1"},
+//     {id:2,name:"item 2"},
+//     {id:3,name:"item 3"},
+//     {id:4,name:"item 4"},
+//     {id:5,name:"item 5"},
+//   ]
 
-  return (
-    <div>
-      <Itemlist items={items}/>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <Itemlist items={items}/>
+//     </div>
+//   )
+// }
 
-export default App;
+// export default App;
+
+
+
+// spa routing
+
+
+
+// import{BrowserRouter,Routes,Route,Link} from "react-router-dom";
+
+// const App =()=>{
+//   return(
+//     <div>
+//       <BrowserRouter>
+//       <Link to="/"> kunalsCode</Link>
+//       <Link to="/neet/class11th">Class 11</Link>
+//       <Link to="/neet/class12th">class 12</Link>
+//       <Routes>
+//        <Route path='/' element={<Landing/>}/>
+//        <Route path='/neet/class11th' element={<Class11th/>}/>
+//        <Route path='neet/class12th' element={<Class12th/>}/>
+//       </Routes>
+//       </BrowserRouter>
+//     </div>
+//   )
+// }
+
+// function Landing(){
+//   return(
+//     <div>
+//       <h1>Landing Page</h1>
+//     </div>
+//   )
+// }
+
+// function Class11th(){
+//   return(
+//     <div>
+//       <h1>Class 11th Page</h1>
+//     </div>
+//   )
+// }
+
+// function Class12th(){
+//   return(
+//     <div>
+//       <h1>Class 12th Page</h1>
+//     </div>
+//   )
+// }
+
+
+
+
+
+
+
+// export default App;
