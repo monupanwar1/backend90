@@ -1,6 +1,6 @@
 // starting react revsiion
 
-import {useEffect, useState} from 'react';
+import { useRef} from 'react';
 
 
 // const App = () => {
@@ -338,3 +338,25 @@ import {useEffect, useState} from 'react';
 
 
 // export default App;
+
+
+
+
+const App =()=>{
+
+  const inputRef =useRef(null);
+
+  const handleClick=()=>{
+   inputRef.current.focus();
+  }
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} placeholder='click on the buttonf for focus me' />
+
+      <button style={{backgroundColor:"blue",height:40 ,width:100}} onClick={handleClick}> foucs</button>
+    </div>
+  )
+}
+
+export default App;
