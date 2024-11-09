@@ -363,39 +363,80 @@ import { useRef, useState} from 'react';
 
 
 // stopwatch 
-const App=()=>{
-  const [time,SetTime]=useState(0);
-  const intervalRef =useRef(null);
+// const App=()=>{
+//   const [time,SetTime]=useState(0);
+//   const intervalRef =useRef(null);
 
-  const starTimer=()=>{
-    if(intervalRef.current!==null) return;
-    intervalRef.current=setInterval(()=>{
-      SetTime((prevTime)=>prevTime+1)
+//   const starTimer=()=>{
+//     if(intervalRef.current!==null) return;
+//     intervalRef.current=setInterval(()=>{
+//       SetTime((prevTime)=>prevTime+1)
 
-    },1000)
+//     },1000)
 
-  }
+//   }
 
-  const stopTimer =()=>{
-    clearInterval(intervalRef.current);
-    intervalRef.current=null;
-  }
+//   const stopTimer =()=>{
+//     clearInterval(intervalRef.current);
+//     intervalRef.current=null;
+//   }
 
-  const resetTimer =()=>{
-    SetTime(0)
-  }
+//   const resetTimer =()=>{
+//     SetTime(0)
+//   }
 
+//   return(
+//     <div>
+//       <h1>Timer:{time}</h1>
+//       <button onClick={starTimer}>Start</button>
+//       <button onClick={stopTimer}>Stop</button>
+//       <button onClick={resetTimer}>Reset</button>
+//     </div>
+//   )
+
+// }
+
+// export default App;
+
+
+
+
+
+// Rolling up the state
+
+function Parent(){
+  const [count,setCount]=useState(0);
   return(
-    <div>
-      <h1>Timer:{time}</h1>
-      <button onClick={starTimer}>Start</button>
-      <button onClick={stopTimer}>Stop</button>
-      <button onClick={resetTimer}>Reset</button>
-    </div>
+    <>
+    <Increase count={count} setCount={setCount}/>
+    <Decrease count={count} setCount={setCount} />
+    <Value count={count} setCount={setCount}/>
+    </>
   )
-
 }
 
+function Increase({count,setCount}){
+  return(
+    <button onClick={()=>setCount(count+1)}>Increase</button>
+  )
+}
+function Decrease({count,setCount}){
+  return(
+    <button onClick={()=>setCount(count-1)}>Decrease</button>
+  )
+}
+
+function Value({count}){
+  return <p>Count:{count}</p>
+}
+
+const App =()=>{
+  return (
+    <div>
+      <Parent/>
+    </div>
+  )
+}
 export default App;
 
 
