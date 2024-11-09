@@ -1,6 +1,6 @@
 // starting react revsiion
 
-import { useRef} from 'react';
+import { useRef, useState} from 'react';
 
 
 // const App = () => {
@@ -342,21 +342,63 @@ import { useRef} from 'react';
 
 
 
-const App =()=>{
+// const App =()=>{
 
-  const inputRef =useRef(null);
+//   const inputRef =useRef(null);
 
-  const handleClick=()=>{
-   inputRef.current.focus();
+//   const handleClick=()=>{
+//    inputRef.current.focus();
+//   }
+
+//   return (
+//     <div>
+//       <input type="text" ref={inputRef} placeholder='click on the buttonf for focus me' />
+
+//       <button style={{backgroundColor:"blue",height:40 ,width:100}} onClick={handleClick}> foucs</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+
+// stopwatch 
+const App=()=>{
+  const [time,SetTime]=useState(0);
+  const intervalRef =useRef(null);
+
+  const starTimer=()=>{
+    if(intervalRef.current!==null) return;
+    intervalRef.current=setInterval(()=>{
+      SetTime((prevTime)=>prevTime+1)
+
+    },1000)
+
   }
 
-  return (
-    <div>
-      <input type="text" ref={inputRef} placeholder='click on the buttonf for focus me' />
+  const stopTimer =()=>{
+    clearInterval(intervalRef.current);
+    intervalRef.current=null;
+  }
 
-      <button style={{backgroundColor:"blue",height:40 ,width:100}} onClick={handleClick}> foucs</button>
+  const resetTimer =()=>{
+    SetTime(0)
+  }
+
+  return(
+    <div>
+      <h1>Timer:{time}</h1>
+      <button onClick={starTimer}>Start</button>
+      <button onClick={stopTimer}>Stop</button>
+      <button onClick={resetTimer}>Reset</button>
     </div>
   )
+
 }
 
 export default App;
+
+
+
+
+
