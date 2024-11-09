@@ -1,6 +1,6 @@
 // starting react revsiion
 
-import { useRef, useState} from 'react';
+import { createContext, useContext, useRef, useState} from 'react';
 
 
 // const App = () => {
@@ -441,47 +441,108 @@ import { useRef, useState} from 'react';
 
 
 
+// const App =()=>{
+//   return (
+//     <div>
+//       <LightBulb/>
+//     </div>
+//   )
+// }
+
+// function LightBulb(){
+//   const [isOn,setIsOn]=useState(true);
+
+//   return (
+//     <div>
+//       <BulbState isOn={isOn}/>
+//       <ToggleBulbState isOn={isOn} setIsOn={setIsOn}/>
+
+//     </div>
+//   )
+// }
+
+// function BulbState({isOn}){
+//   return (
+//     <div>
+//     {isOn ? "Bulb on":"Bulb off"}
+//     </div>
+//   )
+// }
+
+// function ToggleBulbState({isOn,setIsOn}){
+//   function toggle(){
+//     setIsOn(!isOn);
+//   }
+//   return (
+//     <div>
+//       <button onClick={toggle}>Toggle Bulb</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+
+
+
+
+
+// context api 
+
+const CountContext=createContext();
+
+
+function CountContextProvider({children}){
+  const [count,setCount]=useState(0);
+
+  return (
+    <CountContext.Provider value ={{count,setCount}}>
+    {children}
+    </CountContext.Provider>
+  )
+
+}
+
+
+function Parent(){
+  return(
+    <CountContextProvider>
+      <Increase/>
+      <Decrease/>
+      <Value/>
+    </CountContextProvider>
+  )
+}
+
+function Increase(){
+  const {count,setCount}=useContext(CountContext);
+  return <button  onClick={()=>setCount(count+1)}>
+    Increase
+   
+  </button>
+}
+function Decrease(){
+  const {count,setCount}=useContext(CountContext);
+  return <button onClick={()=>setCount(count-1)}>
+    Decrease
+    
+  </button>
+}
+function Value(){
+  const {count}=useContext(CountContext);
+  return <p>
+    Count: {count}
+  </p>
+}
+
+
 const App =()=>{
   return (
     <div>
-      <LightBulb/>
-    </div>
-  )
-}
-
-function LightBulb(){
-  const [isOn,setIsOn]=useState(true);
-
-  return (
-    <div>
-      <BulbState isOn={isOn}/>
-      <ToggleBulbState isOn={isOn} setIsOn={setIsOn}/>
-
-    </div>
-  )
-}
-
-function BulbState({isOn}){
-  return (
-    <div>
-    {isOn ? "Bulb on":"Bulb off"}
-    </div>
-  )
-}
-
-function ToggleBulbState({isOn,setIsOn}){
-  function toggle(){
-    setIsOn(!isOn);
-  }
-  return (
-    <div>
-      <button onClick={toggle}>Toggle Bulb</button>
+      <Parent/>
     </div>
   )
 }
 
 export default App;
-
-
-
 
