@@ -404,41 +404,83 @@ import { useRef, useState} from 'react';
 
 // Rolling up the state
 
-function Parent(){
-  const [count,setCount]=useState(0);
-  return(
-    <>
-    <Increase count={count} setCount={setCount}/>
-    <Decrease count={count} setCount={setCount} />
-    <Value count={count} setCount={setCount}/>
-    </>
-  )
-}
+// function Parent(){
+//   const [count,setCount]=useState(0);
+//   return(
+//     <>
+//     <Increase count={count} setCount={setCount}/>
+//     <Decrease count={count} setCount={setCount} />
+//     <Value count={count} setCount={setCount}/>
+//     </>
+//   )
+// }
 
-function Increase({count,setCount}){
-  return(
-    <button onClick={()=>setCount(count+1)}>Increase</button>
-  )
-}
-function Decrease({count,setCount}){
-  return(
-    <button onClick={()=>setCount(count-1)}>Decrease</button>
-  )
-}
+// function Increase({count,setCount}){
+//   return(
+//     <button onClick={()=>setCount(count+1)}>Increase</button>
+//   )
+// }
+// function Decrease({count,setCount}){
+//   return(
+//     <button onClick={()=>setCount(count-1)}>Decrease</button>
+//   )
+// }
 
-function Value({count}){
-  return <p>Count:{count}</p>
-}
+// function Value({count}){
+//   return <p>Count:{count}</p>
+// }
+
+// const App =()=>{
+//   return (
+//     <div>
+//       <Parent/>
+//     </div>
+//   )
+// }
+// export default App;
+
+
 
 const App =()=>{
   return (
     <div>
-      <Parent/>
+      <LightBulb/>
     </div>
   )
 }
-export default App;
 
+function LightBulb(){
+  const [isOn,setIsOn]=useState(true);
+
+  return (
+    <div>
+      <BulbState isOn={isOn}/>
+      <ToggleBulbState isOn={isOn} setIsOn={setIsOn}/>
+
+    </div>
+  )
+}
+
+function BulbState({isOn}){
+  return (
+    <div>
+    {isOn ? "Bulb on":"Bulb off"}
+    </div>
+  )
+}
+
+function ToggleBulbState({isOn,setIsOn}){
+  function toggle(){
+    setIsOn(!isOn);
+  }
+  return (
+    <div>
+      <button onClick={toggle}>Toggle Bulb</button>
+    </div>
+  )
+}
+
+export default App;
 
 
 
