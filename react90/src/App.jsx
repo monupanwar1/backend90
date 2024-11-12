@@ -596,41 +596,41 @@ import { createContext, useContext, useRef, useState} from 'react';
 // export default App;
 
 
-function useCounter(){
+// function useCounter(){
 
-  const[count,SetCount]=useState(0);
+//   const[count,SetCount]=useState(0);
 
-  function Increment(){
-    SetCount(count+1);
-  }
+//   function Increment(){
+//     SetCount(count+1);
+//   }
 
-  return {count,Increment}
+//   return {count,Increment}
 
-}
+// }
 
 
-function App(){
+// function App(){
 
-  return (
-    <div>
-      <Counter/>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <Counter/>
+//     </div>
+//   )
+// }
 
-export default App;
+// export default App;
 
-function Counter(){
+// function Counter(){
 
-  const {count,Increment} = useCounter();
+//   const {count,Increment} = useCounter();
 
-  return(
-    <div>
-      <p>{count}</p>
-      <button onClick={Increment} >Increase</button>
+//   return(
+//     <div>
+//       <p>{count}</p>
+//       <button onClick={Increment} >Increase</button>
 
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
 
